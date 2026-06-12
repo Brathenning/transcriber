@@ -414,7 +414,8 @@ def handle_section(section: etree._Element, ns: dict, args: argparse.Namespace) 
 						n_1.getparent().remove(n_1)
 
 				xml_id_mapping[nh_xml_id] = xml_id 
-				notes_unspelled_by_ID[nh_xml_id] = (measure.get('n'), midi_pitch)
+				if midi_pitch is None: #to avoid spell_pitch java pitch getting null
+					notes_unspelled_by_ID[nh_xml_id] = (measure.get('n'), midi_pitch)
 
 			# e. Handle <rest>: remove @tab.line
 			elif elem.tag == f'{URI_MEI}rest':
