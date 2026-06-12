@@ -406,7 +406,7 @@ def handle_section(section: etree._Element, ns: dict, args: argparse.Namespace) 
 					n_1.getparent().replace(n_1, nh_note)
 				else:
 					n_2 = id_index_nh_staff_2[xml_id]
-					if midi_pitch >= 60:
+					if midi_pitch is None or midi_pitch >= 60:
 						n_1.getparent().replace(n_1, nh_note) 
 						n_2.getparent().remove(n_2)
 					else:
